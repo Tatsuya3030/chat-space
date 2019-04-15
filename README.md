@@ -45,7 +45,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :group
-- belongs_to :user
+- belongs_to :users
 
 ## groupsテーブル
 
@@ -65,5 +65,5 @@ Things you may want to cover:
 |group_id|reference|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :users
 - belongs_to :group
