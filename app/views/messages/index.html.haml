@@ -1,0 +1,48 @@
+.header
+  .header__text
+    グループを作成しました
+
+.sub-content
+  .sub-content__top
+    %P.sub-content__top--text
+      Tatsuya
+    %ul.font-box
+      %li.font-box__icon
+        %a.font-box__icon--link{href: "#"}
+          %i{class: "fa fa-edit"}
+      %li.font-box__icon
+        %a.font-box__icon--link{href: "#"}
+          %i{class: "fa fa-cog"}
+  .sub-content__bottom
+    .sub-content__bottom-box
+      %p.sub-content__bottom-box--text
+        Cat Space
+      %p.sub-content__bottom-box--comment
+        relax room
+.main-content
+  .main-content__top
+    .main-content__top-box
+      %h2.main-content__top-box--text
+        Sample
+      %p.main-content__top-box--member
+        Suzuki, arakawa, ishizaki
+    .main-content__top-editbox
+      %a.main-content__top-editbox--edit{href: "#"}
+        Edit
+
+  .main-content__center
+    .main-content__center-box
+      .comment-box
+        %p.comment-box--user
+          Tatsuya
+        %p.comment-box--data
+          2019/04/17(Wed)
+      %p.main-content__center-box--review
+
+  .main-content__bottom
+    %form.form-box
+      .message-box
+        %input.message-box--message{placeholder: "type a message"}
+        %label.message-box__picture
+          %i{class: "fa fa-image"}
+      %input.form-box--sentbutton{type: "submit", value: "SEND"}
