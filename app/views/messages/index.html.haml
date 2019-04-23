@@ -4,44 +4,58 @@
 .sub-content
   .sub-content__top
     %P.sub-content__top--text
-      Tatsuya
+      = current_user.name
     %ul.font-box
       %li.font-box__icon
-        = link_to '/' do
+        = link_to new_group_path do
           %i{class: "fa fa-edit"}
       %li.font-box__icon
-        = link_to '/' do
+        = link_to edit_user_path(current_user) do
           %i{class: "fa fa-cog"}
   .sub-content__bottom
-    .sub-content__bottom-box
-      %p.sub-content__bottom-box--text
-        Cat Space
-      %p.sub-content__bottom-box--comment
-        relax room
+    - current_user.groups.each do |group|
+      = link_to group_messages_path(group), class: "sub-content__bottom--link"  do
+        .sub-content__bottom-box
+          %p.sub-content__bottom-box--text
+            = group.name
+          %p.sub-content__bottom-box--comment
+            = group.show_last_message
 .main-content
   .main-content__top
-    .main-content__top-box
-      %h2.main-content__top-box--text
-        Sample
-      %p.main-content__top-box--member
-        Suzuki, arakawa, ishizaki
+    %h2.main-content__top--text
+      = @group.name
+      %p.main-content__top--member
+        Member :
+        = render partial: 'group', collection: @groups
     .main-content__top-editbox
-      = link_to '/' do
-        Edit
+      = link_to "Edit", edit_group_path(@group.id)
 
   .main-content__center
     .main-content__center-box
-      .comment-box
-        %p.comment-box--user
-          Tatsuya
-        %p.comment-box--data
-          2019/04/17(Wed)
       %p.main-content__center-box--review
+        = render @messages
 
   .main-content__bottom
-    %form.form-box
-      .message-box
-        %input.message-box--message{placeholder: "type a message"}
-        %label.message-box__picture
-          %i{class: "fa fa-image"}
-      %input.form-box--sentbutton{type: "submit", value: "SEND"}
+    .message-box
+      = form_for [@group, @message] do |f|
+        .message-box--message
+          = f.text_field :content, class: 'message-box--message', placeholder: 'type a message'
+        .message-box__picture
+          = f.label :image, class: 'message-box__picture' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        .message-box--sentbutton
+          = f.submit 'Send', class: 'message-box--sentbutton', type: "submit"
+
+
+    -# .form
+    -#   = form_for [@group, @message] do |f|
+    -#     = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+    -#     .form__mask
+    -#       = f.label :image, class: 'form__mask__image' do
+    -#         = fa_icon 'picture-o', class: 'icon'
+    -#         = f.file_field :image, class: 'hidden'
+        -# = f.submit 'Send', class: 'form__submit'
+
+    -# .messages
+    -#   = render @messages
