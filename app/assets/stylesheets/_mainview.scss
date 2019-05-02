@@ -82,7 +82,7 @@
       &--member {
         font-size: 12px;
         color: #999999;
-        padding-left: 40px;
+        padding-right: 40px;
       }
       &-editbox {
         font-size: 16px;
@@ -112,47 +112,38 @@
       }
   }
 }
-.main-content__bottom {
-    background-color: #dddddd;
-    width: calc(100vw - 300px);
-    height: 100px;
-    float: right;
-    }
-
-.message-box {
-  flex-wrap: wrap;
+.messageform {
+  width: calc(100vw - 300px);
+  height: 100px;
+  display: flex;
   justify-content: space-between;
-  width: calc(100vw - 495px);
-  margin: 15px 0 15px 40px;
-  position: relative;
-  &--message {
-    font-size: 16px;
-    color: #434A54;
-    padding-left: 10px;
-    margin-top: 0;
-    width: calc(100% - 15px);
-    height: 50px;
+  flex-wrap: wrap;
+  padding: 0 50px 0 40px;
+  background-color: #dddddd;
+  &__message {
+    border: none;
     float: left;
-  }
-  &__picture {
-    margin-top: 30px;
-    right: 30px;
-    position: absolute;
-    .hidden {
-      display: none;
-    }
-  }
-  &--sentbutton {
-    margin: 15px 40px 15px 15px;
-    background-color: $light_blue;
-    color: $white;
-    width: 100px;
     height: 50px;
+    padding-left: 13px;
+    position: relative;
+  }
+    &--picture {
+      background-color: $white;
+      float: left;
+      height: 50px;
+      padding-right: 10px;
+      position: absolute;
+    }
+  &__sentbutton {
+    background-color: $light_blue;
+    border: none;
+    color: $white;
     float: right;
-    margin: 0;
+    font-size: 16px;
+    height: 50px;
+    padding: 0 30px;
   }
 }
-
 
 .fa-cog, .fa-edit {
   color: $white;
@@ -160,6 +151,7 @@
 
 a{
   text-decoration: none;
+  color: $light_blue;
 }
 
 .upper-message__user-name{
@@ -172,4 +164,7 @@ a{
   font-size: 12px;
   color: #999999;
   margin-left: 10px;
+}
+#message_image {
+  display: none;
 }
