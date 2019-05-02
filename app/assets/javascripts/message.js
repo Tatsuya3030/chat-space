@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.main-content__center').append(html);
-      $('#message_content').val('');
+      $('messageform')[0].reset();
       $(".main-content__center").animate({scrollTop:$('.main-content__center')[0].scrollHeight});
       $(".messageform__sentbutton").prop('disabled', false);
     })
