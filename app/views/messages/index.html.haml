@@ -31,22 +31,18 @@
       = link_to "Edit", edit_group_path(@group.id)
 
   .main-content__center
-    .main-content__center-box
-      %p.main-content__center-box--review
-        = render @messages
+    = render @messages
 
-  .main-content__bottom
-    .message-box
-      = form_for [@group, @message] do |f|
-        .message-box--message
-          = f.text_field :content, class: 'message-box--message', placeholder: 'type a message'
-        .message-box__picture
-          = f.label :image, class: 'message-box__picture' do
+  .messageform
+    = form_for [@group, @message] do |f|
+      .messageform__message
+        = f.text_field :content, class: 'messageform__message', placeholder: 'type a message'
+        .messageform__message--picture
+          = f.label :image, class: 'messageform__messaga--picture' do
             = fa_icon 'picture-o', class: 'icon'
             = f.file_field :image, class: 'hidden'
-        .message-box--sentbutton
-          = f.submit 'Send', class: 'message-box--sentbutton', type: "submit"
-
+      .messageform__sentbutton
+        = f.submit 'Send', class: 'messageform__sentbutton', type: "submit"
 
     -# .form
     -#   = form_for [@group, @message] do |f|
