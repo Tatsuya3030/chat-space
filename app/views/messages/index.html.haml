@@ -25,8 +25,8 @@
     %h2.main-content__top--text
       = @group.name
       %p.main-content__top--member
-        Member :
-        = render partial: 'group', collection: @groups
+        - @group.users.each do |user|
+          = user.name
     .main-content__top-editbox
       = link_to "Edit", edit_group_path(@group.id)
 
