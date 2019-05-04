@@ -126,13 +126,15 @@
     height: 50px;
     padding-left: 13px;
     position: relative;
+    width: 75%;
+    background-color: #fff;
+    margin-right: 5px;
   }
     &--picture {
       background-color: $white;
-      float: left;
-      height: 50px;
-      padding-right: 10px;
       position: absolute;
+      top: calc(50% - 10px);
+      right: 20px;
     }
   &__sentbutton {
     background-color: $light_blue;
@@ -167,4 +169,19 @@ a{
 }
 #message_image {
   display: none;
+}
+
+.message{
+  padding-top: 46px;
+}
+
+#new_message{
+  width: 100%;
+  padding-top: 2.5%;
+}
+
+#new_message > div.messageform__message > div{
+  position: absolute;
+  top: calc(50% - 10px);
+  right: 20px;
 }
