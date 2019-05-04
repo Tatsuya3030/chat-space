@@ -35,12 +35,36 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.main-content__center').append(html);
-      $('messageform')[0].reset();
       $(".main-content__center").animate({scrollTop:$('.main-content__center')[0].scrollHeight});
+      $('messageform')[0].reset();
       $(".messageform__sentbutton").prop('disabled', false);
     })
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
     })
   })
+  var interval = setInterval(function() {
+    if (location.href.match(/\/groups\/\d+\/messages/)){
+      $(".main-content__center").animate({scrollTop:$('.main-content__center')[0].scrollHeight});
+      var message_id = $('.message').last().data('id');
+      $.ajax({
+        url: location.href,
+        type: "GET",
+        data: {id: message_id},
+        dataType: "json"
+      })
+      .done(function(data) {
+        data.forEach(function(message) {
+          var html = buildHTML(message);
+          $('.main-content__center').append(html);
+          $(".main-content__center").animate({scrollTop:$('.main-content__center')[0].scrollHeight});
+        })
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+      });
+    } else {
+        clearInterval(interval);
+      }
+  } , 5000 );
 });
