@@ -33,12 +33,18 @@ $(document).on('turbolinks:load', function(){
       contentType: false
     })
     .done(function(data){
+      if ( data.content != undefined ){
       var html = buildHTML(data);
       $('.main-content__center').append(html);
       $(".main-content__center").animate({scrollTop:$('.main-content__center')[0].scrollHeight});
-      $('messageform')[0].reset();
+      $('.messageform').val('');
       $(".messageform__sentbutton").prop('disabled', false);
+      }
+      else{
+        alert("メッセージを入力して下さい")
+      }
     })
+
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
     })
