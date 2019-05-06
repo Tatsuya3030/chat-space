@@ -37,7 +37,8 @@ $(document).on('turbolinks:load', function(){
       var html = buildHTML(data);
       $('.main-content__center').append(html);
       $(".main-content__center").animate({scrollTop:$('.main-content__center')[0].scrollHeight});
-      $('.messageform').val('');
+      $('.messageform__message').val('');
+      $('.hidden').val('');
       $(".messageform__sentbutton").prop('disabled', false);
       }
       else{
